@@ -9,6 +9,8 @@ def members(request):
     'mymembers': mymembers,   #Sends the object to the template.
   }
   return HttpResponse(template.render(context, request)) #Outputs the HTML that is rendered by the template.
+
+
 # def members(request):
 #   template = loader.get_template('myfirst.html')
 #   return HttpResponse(template.render())
