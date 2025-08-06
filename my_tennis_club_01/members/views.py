@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
-from .models import Member
+from .models import Member #here we imported the model to send it to the template to be displayed
 
 def members(request):
   mymembers = Member.objects.all().values() #Creates a mymembers object with all the values of the Member model.
@@ -10,6 +10,13 @@ def members(request):
   }
   return HttpResponse(template.render(context, request)) #Outputs the HTML that is rendered by the template.
 
+def details(request, id): #takes id as an argument & locate the record in the Member table
+  mymember = Member.objects.get(id=id)
+  template = loader.get_template('details.html') #loads details.html template
+  context = { 
+    'mymember': mymember, #creates an object that contains the member 
+  }
+  return HttpResponse(template.render(context, request)) #sends the object to the template & outputs the html rendered by the template
 
 # def members(request):
 #   template = loader.get_template('myfirst.html')
