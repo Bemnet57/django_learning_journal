@@ -18,6 +18,12 @@ def details(request, id): #takes id as an argument & locate the record in the Me
   }
   return HttpResponse(template.render(context, request)) #sends the object to the template & outputs the html rendered by the template
 
+def main(request):
+  template = loader.get_template('main.html')
+  return HttpResponse(template.render())
+
+
+
 # def members(request):
 #   template = loader.get_template('myfirst.html')
 #   return HttpResponse(template.render())
